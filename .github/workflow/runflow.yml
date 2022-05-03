@@ -1,4 +1,4 @@
-name: runflow
+name: CI
 
 on: [ push ]
 
