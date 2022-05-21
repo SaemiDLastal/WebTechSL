@@ -1,10 +1,10 @@
 package de.htw.berlin.Einkaufsliste1.web.api;
 
-public class FruitsCreateRequest {
+public class FruitsManipulationRequest {
     private String name;
     private boolean bio;
 
-    public FruitsCreateRequest(String name, boolean bio) {
+    public FruitsManipulationRequest(String name, boolean bio) {
         this.name = name;
         this.bio = bio;
     }
