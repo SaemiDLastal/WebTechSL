@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FruitsRepo extends JpaRepository<FruitsEntity,Long> {
+public interface ShoppingListRepo extends JpaRepository<ShoppingListEntity,Long> {
 
-    List<FruitsEntity> findAllByName(String name);
+    List<ShoppingListEntity> findAllByName(String name);
 }

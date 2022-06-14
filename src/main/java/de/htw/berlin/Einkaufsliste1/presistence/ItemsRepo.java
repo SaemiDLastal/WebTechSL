@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BreadRepo extends JpaRepository<BreadEntity, Long> {
+public interface ItemsRepo extends JpaRepository<ItemsEntity,Long> {
 
-    List<BreadEntity> findAllByName(String name);
-
+    List<ItemsEntity> findAllByName(String name);
 }
