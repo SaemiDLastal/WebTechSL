@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface ShoppingListRepo extends JpaRepository<ShoppingListEntity,Long> {
 
-    List<ShoppingListEntity> findAllByName(String name);
+    List<ShoppingListEntity> findAllByTitle(String title);
 }

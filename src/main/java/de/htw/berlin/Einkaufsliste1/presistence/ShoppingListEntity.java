@@ -21,11 +21,12 @@ public class ShoppingListEntity {
     @Column(name="bought")
     private boolean bought;
 
-    @OneToMany(mappedBy = "shopping_list")
-    Set<CreatedShoppingListEntity> createdShoppingList;
+    @ManyToMany
+    Set<ItemsEntity> createdShoppingList;
 
-    public ShoppingListEntity(long id, String title, double amount, boolean bought) {
-        this.id = id;
+
+
+    public ShoppingListEntity( String title, double amount, boolean bought) {
         this.title = title;
         this.amount = amount;
         this.bought = bought;
@@ -62,9 +63,11 @@ public class ShoppingListEntity {
         this.bought = bought;
     }
 
-    public Set<CreatedShoppingListEntity> getCreatedShoppingList(){
+    public Set<ItemsEntity> getCreatedShoppingList() {
         return createdShoppingList;
     }
 
-
+    public void setCreatedShoppingList(Set<ItemsEntity> createdShoppingList) {
+        this.createdShoppingList = createdShoppingList;
+    }
 }

@@ -39,9 +39,9 @@ public class ItemsService {
         }
         var itemsEntity = itemsEntityOptional.get();
         itemsEntity.setName(request.getName());
-
        itemsEntity.setAmount(request.getAmount());
         itemsEntity= itemsRepo.save(itemsEntity);
+
         return transfromEntity(itemsEntity);
     }
 

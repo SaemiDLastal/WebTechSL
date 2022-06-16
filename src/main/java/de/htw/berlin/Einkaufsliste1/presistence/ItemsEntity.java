@@ -19,9 +19,10 @@ public class ItemsEntity {
     @Column(name= "amount")
     private double amount;
 
+    @ManyToMany
+    Set<ShoppingListEntity> itemsForShoppingList;
 
-    @OneToMany(mappedBy = "items")
-    Set<CreatedShoppingListEntity> createdShoppingList;
+
 
     public ItemsEntity(String name, String category, double amount) {
         this.name = name;
@@ -63,16 +64,11 @@ public class ItemsEntity {
         this.amount = amount;
     }
 
-
-    public Set<CreatedShoppingListEntity> getCreatedShoppingList() {
-        return createdShoppingList;
+    public Set<ShoppingListEntity> getItemsForShoppingList() {
+        return itemsForShoppingList;
     }
 
-    public void setCreatedShoppingList(Set<CreatedShoppingListEntity> createdShoppingList) {
-        this.createdShoppingList = createdShoppingList;
-    }
-
-    public Set<CreatedShoppingListEntity> createdShoppingList(){
-        return createdShoppingList;
+    public void setItemsForShoppingList(Set<ShoppingListEntity> itemsForShoppingList) {
+        this.itemsForShoppingList = itemsForShoppingList;
     }
 }
