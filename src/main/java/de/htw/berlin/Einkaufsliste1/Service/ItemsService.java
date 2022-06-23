@@ -27,7 +27,7 @@ public class ItemsService {
         return itemsEntity.map(this::transfromEntity).orElse(null);
     }
     public Items create(ItemsManipulationRequest request){
-        var itemsEntity= new ItemsEntity( request.getName(), request.getCategory(), request.getAmount());
+        var itemsEntity= new ItemsEntity( request.getName(), request.getCategory());
        itemsEntity= itemsRepo.save(itemsEntity);
        return transfromEntity(itemsEntity);
     }
@@ -39,7 +39,6 @@ public class ItemsService {
         }
         var itemsEntity = itemsEntityOptional.get();
         itemsEntity.setName(request.getName());
-       itemsEntity.setAmount(request.getAmount());
         itemsEntity= itemsRepo.save(itemsEntity);
 
         return transfromEntity(itemsEntity);
@@ -55,6 +54,6 @@ public class ItemsService {
 
     private Items transfromEntity(ItemsEntity itemsEntity) {
 
-        return new Items(itemsEntity.getId(), itemsEntity.getName(), itemsEntity.getCategory(), itemsEntity.getAmount());
+        return new Items(itemsEntity.getId(), itemsEntity.getName(), itemsEntity.getCategory());
     }
 }

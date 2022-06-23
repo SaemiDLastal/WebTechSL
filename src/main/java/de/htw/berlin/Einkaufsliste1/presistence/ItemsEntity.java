@@ -16,18 +16,14 @@ public class ItemsEntity {
 
     @Column(name = "category", nullable = false)
     private String category;
-    @Column(name= "amount")
-    private double amount;
-
     @ManyToMany
     Set<ShoppingListEntity> itemsForShoppingList;
 
 
 
-    public ItemsEntity(String name, String category, double amount) {
+    public ItemsEntity(String name, String category) {
         this.name = name;
         this.category = category;
-        this.amount = amount;
     }
 
     protected ItemsEntity() {}
@@ -54,14 +50,6 @@ public class ItemsEntity {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     public Set<ShoppingListEntity> getItemsForShoppingList() {

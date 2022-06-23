@@ -4,14 +4,15 @@ public class ItemsManipulationRequest {
     private String name;
 
     private String category;
-    private double amount;
 
 
 
-    public ItemsManipulationRequest(String name, String category, double amount) {
+    public ItemsManipulationRequest(String name, String category) {
         this.name = name;
         this.category = category;
-        this.amount = amount;
+    }
+
+    public ItemsManipulationRequest() {
     }
 
     public String getName() {
@@ -30,11 +31,4 @@ public class ItemsManipulationRequest {
         this.category = category;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 }

@@ -14,6 +14,9 @@ public class ShoppingListManipulationRequest {
         this.bought = bought;
     }
 
+    public ShoppingListManipulationRequest() {
+    }
+
     public String getTitle() {
         return title;
     }

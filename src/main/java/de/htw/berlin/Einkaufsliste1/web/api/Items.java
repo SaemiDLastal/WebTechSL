@@ -3,16 +3,14 @@ package de.htw.berlin.Einkaufsliste1.web.api;
 public class Items {
     private long id;
     private String name;
-
     private String category;
-    private double amount;
 
 
-    public Items(long id, String name, String category, double amount) {
+
+    public Items(long id, String name, String category) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.amount = amount;
     }
 
     public void setId(long id) {
@@ -21,14 +19,6 @@ public class Items {
 
     public long getId() {
         return id;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     public String getName() {
