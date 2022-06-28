@@ -5,7 +5,7 @@ import de.htw.berlin.Einkaufsliste1.web.api.Items;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
+@Entity(name="shoppingList")
 public class ShoppingListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
