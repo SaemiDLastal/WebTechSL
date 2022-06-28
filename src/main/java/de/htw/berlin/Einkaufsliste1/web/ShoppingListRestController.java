@@ -1,7 +1,9 @@
 package de.htw.berlin.Einkaufsliste1.web;
 
 import de.htw.berlin.Einkaufsliste1.Service.ShoppingListService;
+import de.htw.berlin.Einkaufsliste1.presistence.ShoppingListEntity;
 import de.htw.berlin.Einkaufsliste1.web.api.ShoppingList;
+import de.htw.berlin.Einkaufsliste1.web.api.ShoppingListCreateRequest;
 import de.htw.berlin.Einkaufsliste1.web.api.ShoppingListManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,11 +34,10 @@ public class ShoppingListRestController {
         return shoppingList != null? ResponseEntity.ok(shoppingList): ResponseEntity.notFound().build();
     }
 
-    @PostMapping(path = "/api/v1/shoppinglist/{id}")
-    public ResponseEntity<ShoppingList> createShoppingList(@RequestBody ShoppingListManipulationRequest request, @PathVariable Long id) throws URISyntaxException {
-        var shoppingList= shoppingListService.create(request);
-        URI uri= new URI("/api/v1/shoppinglist/" + shoppingList.getId());
-
+    @PostMapping(path = "/api/v1/shoppinglist")
+    public ResponseEntity<Void> createShoppingList(@RequestBody ShoppingListCreateRequest request) throws URISyntaxException {
+        var shoppingList = shoppingListService.create(request);
+        URI uri = new URI("/api/v1/shoppinglist/" + shoppingList.getId());
         return ResponseEntity.created(uri).build();
     }
 

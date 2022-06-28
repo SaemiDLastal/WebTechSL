@@ -5,9 +5,11 @@ import de.htw.berlin.Einkaufsliste1.presistence.ShoppingListEntity;
 import de.htw.berlin.Einkaufsliste1.presistence.ShoppingListRepo;
 import de.htw.berlin.Einkaufsliste1.web.api.Items;
 import de.htw.berlin.Einkaufsliste1.web.api.ShoppingList;
+import de.htw.berlin.Einkaufsliste1.web.api.ShoppingListCreateRequest;
 import de.htw.berlin.Einkaufsliste1.web.api.ShoppingListManipulationRequest;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -15,22 +17,24 @@ import java.util.stream.Collectors;
 
 @Service
 public class ShoppingListService {
+
     private final ShoppingListRepo shoppingListRepo;
 
     public ShoppingListService(ShoppingListRepo shoppingListRepo) {
         this.shoppingListRepo = shoppingListRepo;
     }
 
+    @Transactional
     public List<ShoppingList> findAll(){
-        List<ShoppingListEntity> shoppingLists= shoppingListRepo.findAll();
+        List<ShoppingListEntity> shoppingLists = shoppingListRepo.findAll();
         List<ShoppingList> shoppList = new ArrayList<>();
 
-        for(ShoppingListEntity shoppingListEntity: shoppingLists){
+        for(ShoppingListEntity shoppingListEntity: shoppingLists) {
             ArrayList<Items> items= new ArrayList<>();
-            Set<ItemsEntity> createdShoppingList= shoppingListEntity.getCreatedShoppingList();
+            Set<ItemsEntity> createdShoppingList = shoppingListEntity.getCreatedShoppingList();
             for(ItemsEntity createdShoppingLists : createdShoppingList)
             {
-                items.add(new Items(createdShoppingLists.getId(),createdShoppingLists.getName(),createdShoppingLists.getCategory(),createdShoppingLists.getAmount()));
+                items.add(new Items(createdShoppingLists.getId(),createdShoppingLists.getName(),createdShoppingLists.getCategory()/*,createdShoppingLists.getAmount()*/));
             }
             ShoppingList shoppingList= new ShoppingList(shoppingListEntity.getId(),shoppingListEntity.getTitle(),shoppingListEntity.getAmount(),shoppingListEntity.isBought(),items);
             shoppList.add(shoppingList);
@@ -43,7 +47,7 @@ public class ShoppingListService {
         return shoppingEntity.map(this::transformEntity).orElse(null);
     }
 
-    public ShoppingList create(ShoppingListManipulationRequest request){
+    public ShoppingList create(ShoppingListCreateRequest request){
         var shoppingListEntity= new ShoppingListEntity
                 (request.getTitle()
                 ,request.getAmount()
