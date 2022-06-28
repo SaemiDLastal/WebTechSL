@@ -34,7 +34,7 @@ public class ShoppingListService {
             Set<ItemsEntity> createdShoppingList = shoppingListEntity.getCreatedShoppingList();
             for(ItemsEntity createdShoppingLists : createdShoppingList)
             {
-                items.add(new Items(createdShoppingLists.getId(),createdShoppingLists.getName(),createdShoppingLists.getCategory()/*,createdShoppingLists.getAmount()*/));
+                items.add(new Items(createdShoppingLists.getId(),createdShoppingLists.getName(),createdShoppingLists.getCategory()));
             }
             ShoppingList shoppingList= new ShoppingList(shoppingListEntity.getId(),shoppingListEntity.getTitle(),shoppingListEntity.getAmount(),shoppingListEntity.isBought(),items);
             shoppList.add(shoppingList);
